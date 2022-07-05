@@ -4,15 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.nikhil.grapqldemo.R
 import com.nikhil.grapqldemo.databinding.FragmentHistoryBinding
 import com.nikhil.grapqldemo.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HistoryFragment : BaseFragment() {
 
     private lateinit var binding: FragmentHistoryBinding
-    private var viewModel: HistoryViewModel? = null
+    private val viewModel: HistoryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,6 +34,5 @@ class HistoryFragment : BaseFragment() {
         showToolbar()
         showBottomNavigation()
         hideBackButton()
-        viewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
     }
 }

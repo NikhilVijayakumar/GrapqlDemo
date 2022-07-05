@@ -1,41 +1,32 @@
-package com.nikhil.grapqldemo.ui.rocket;
+package com.nikhil.grapqldemo.ui.rocket
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import com.nikhil.grapqldemo.R
+import com.nikhil.grapqldemo.databinding.FragmentRocketBinding
+import com.nikhil.grapqldemo.ui.base.BaseFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProvider;
+@AndroidEntryPoint
+class RocketFragment : BaseFragment() {
 
-import com.nikhil.grapqldemo.R;
-import com.nikhil.grapqldemo.databinding.FragmentRocketBinding;
-import com.nikhil.grapqldemo.ui.base.BaseFragment;
+    private lateinit var binding: FragmentRocketBinding
+    private val viewModel: RocketViewModel by viewModels()
 
-
-
-public class RocketFragment extends BaseFragment {
-
-    private FragmentRocketBinding binding;
-    private RocketViewModel viewModel;
-
-    public RocketFragment() {
-        // Required empty public constructor
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = customizeDataBinding(inflater, container, R.layout.fragment_rocket)
+        return binding.root
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = customizeDataBinding(inflater, container, R.layout.fragment_rocket);
-        return binding.getRoot();
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        showToolbar();
-        showBottomNavigation();
-        hideBackButton();
-        viewModel = new ViewModelProvider(this).get(RocketViewModel.class);
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        showToolbar()
+        showBottomNavigation()
+        hideBackButton()
     }
 }

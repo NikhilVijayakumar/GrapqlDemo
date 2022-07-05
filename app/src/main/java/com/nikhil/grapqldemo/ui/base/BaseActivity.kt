@@ -1,6 +1,5 @@
 package com.nikhil.grapqldemo.ui.base
 
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
@@ -9,7 +8,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.nikhil.grapqldemo.R
 import com.nikhil.grapqldemo.databinding.ActivityBaseBinding
-
 
 open class BaseActivity : AppCompatActivity() {
 

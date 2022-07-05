@@ -1,5 +1,8 @@
 package com.nikhil.grapqldemo.ui.users
 
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class UsersViewModel : ViewModel()
+@HiltViewModel
+class UsersViewModel @Inject constructor() : ViewModel()
