@@ -1,7 +1,5 @@
-package com.nikhil.grapqldemo.ui.history;
+package com.nikhil.grapqldemo.ui.history
 
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel
 
-public class HistoryViewModel extends ViewModel {
-
-}
+class HistoryViewModel : ViewModel()

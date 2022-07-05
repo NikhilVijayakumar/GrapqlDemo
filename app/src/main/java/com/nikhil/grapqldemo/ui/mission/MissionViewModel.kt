@@ -1,7 +1,5 @@
-package com.nikhil.grapqldemo.ui.mission;
+package com.nikhil.grapqldemo.ui.mission
 
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel
 
-public class MissionViewModel extends ViewModel {
-
-}
+class MissionViewModel : ViewModel()

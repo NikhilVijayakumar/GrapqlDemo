@@ -1,70 +1,62 @@
-package com.nikhil.grapqldemo.ui.base;
+package com.nikhil.grapqldemo.ui.base
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
+import com.nikhil.grapqldemo.ui.main.MainActivity
 
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
+open class BaseFragment : Fragment() {
 
-import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
-import androidx.fragment.app.Fragment;
+    private val baseActivity: BaseActivity?
+        get() = activity as BaseActivity?
+    private val isEnableBaseActivity: Boolean
+        get() = baseActivity != null
 
-import com.nikhil.grapqldemo.ui.main.MainActivity;
-
-
-public class BaseFragment extends Fragment {
-
-   private BaseActivity getBaseActivity(){
-       return (BaseActivity)(getActivity());
-   }
-
-    private boolean isEnableBaseActivity(){
-        return getBaseActivity()!=null;
-    }
-
-
-    protected void hideToolbar() {
-       if(isEnableBaseActivity()){
-           getBaseActivity().hideToolbar();
-       }
-    }
-
-    protected void showToolbar() {
-        if(isEnableBaseActivity()){
-            getBaseActivity().showToolbar();
+    protected fun hideToolbar() {
+        if (isEnableBaseActivity) {
+            baseActivity!!.hideToolbar()
         }
     }
 
-    protected void hideBottomNavigation() {
-        if(isEnableBaseActivity()){
-            ((MainActivity) getBaseActivity()).hideBottomNavigation();
+    protected fun showToolbar() {
+        if (isEnableBaseActivity) {
+            baseActivity?.showToolbar()
         }
     }
 
-    protected void showBottomNavigation() {
-        if(isEnableBaseActivity()){
-            ((MainActivity) getBaseActivity()).showBottomNavigation();
+    protected fun hideBottomNavigation() {
+        if (isEnableBaseActivity) {
+            (baseActivity as MainActivity?)?.hideBottomNavigation()
         }
     }
 
-    protected void hideBackButton() {
-        if(isEnableBaseActivity()){
-            getBaseActivity().hideBackButton();
+    protected fun showBottomNavigation() {
+        if (isEnableBaseActivity) {
+            (baseActivity as MainActivity?)?.showBottomNavigation()
         }
     }
 
-    protected void showBackButton() {
-        if(isEnableBaseActivity()){
-            getBaseActivity().showBackButton();
+    protected fun hideBackButton() {
+        if (isEnableBaseActivity) {
+            baseActivity?.hideBackButton()
         }
     }
 
-    protected <T extends ViewDataBinding> T  customizeDataBinding(LayoutInflater inflater, ViewGroup container,int layoutId) {
-        T binding =
-                DataBindingUtil.inflate(inflater, layoutId, container, false);
-        binding.setLifecycleOwner(getViewLifecycleOwner());
-       return binding;
+    protected fun showBackButton() {
+        if (isEnableBaseActivity) {
+            baseActivity?.showBackButton()
+        }
     }
 
-
-
+    protected fun <T : ViewDataBinding> customizeDataBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        layoutId: Int
+    ): T {
+        val binding = DataBindingUtil.inflate<T>(inflater, layoutId, container, false)
+        binding.lifecycleOwner = viewLifecycleOwner
+        return binding
+    }
 }

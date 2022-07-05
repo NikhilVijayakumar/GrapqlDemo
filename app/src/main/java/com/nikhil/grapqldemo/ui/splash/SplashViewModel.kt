@@ -1,7 +1,5 @@
-package com.nikhil.grapqldemo.ui.splash;
+package com.nikhil.grapqldemo.ui.splash
 
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel
 
-public class SplashViewModel extends ViewModel {
-
-}
+class SplashViewModel : ViewModel()

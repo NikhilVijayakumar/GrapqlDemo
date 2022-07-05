@@ -1,7 +1,5 @@
-package com.nikhil.grapqldemo.ui.users;
+package com.nikhil.grapqldemo.ui.users
 
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel
 
-public class UsersViewModel extends ViewModel {
-
-}
+class UsersViewModel : ViewModel()

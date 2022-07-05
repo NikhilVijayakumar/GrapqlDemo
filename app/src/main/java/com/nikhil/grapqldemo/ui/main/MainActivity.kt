@@ -1,31 +1,24 @@
-package com.nikhil.grapqldemo.ui.main;
-
-import android.os.Bundle;
-import android.view.View;
-
-import com.nikhil.grapqldemo.ui.base.BaseActivity;
+package com.nikhil.grapqldemo.ui.main
 
 
-public class MainActivity extends BaseActivity {
+import android.os.Bundle
+import android.view.View
+import com.nikhil.grapqldemo.ui.base.BaseActivity
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        customizeDataBinding();
-        hideToolbar();
-        hideBottomNavigation();
+class MainActivity : BaseActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        customizeDataBinding()
+        hideToolbar()
+        hideBottomNavigation()
     }
 
-    public void hideBottomNavigation() {
-        if (binding != null) {
-            binding.bottomNavigation.setVisibility(View.GONE);
-        }
+    fun hideBottomNavigation() {
+        binding?.bottomNavigation?.visibility = View.GONE
     }
 
-    public void showBottomNavigation() {
-        if (binding != null) {
-            binding.bottomNavigation.setVisibility(View.VISIBLE);
-        }
+    fun showBottomNavigation() {
+        binding?.bottomNavigation?.visibility = View.VISIBLE
     }
-
 }

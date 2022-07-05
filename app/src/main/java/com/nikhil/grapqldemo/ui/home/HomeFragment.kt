@@ -1,41 +1,31 @@
-package com.nikhil.grapqldemo.ui.home;
+package com.nikhil.grapqldemo.ui.home
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import com.nikhil.grapqldemo.R
+import com.nikhil.grapqldemo.databinding.FragmentHomeBinding
+import com.nikhil.grapqldemo.ui.base.BaseFragment
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProvider;
+class HomeFragment : BaseFragment() {
 
-import com.nikhil.grapqldemo.R;
-import com.nikhil.grapqldemo.databinding.FragmentHomeBinding;
-import com.nikhil.grapqldemo.ui.base.BaseFragment;
+    private var binding: FragmentHomeBinding? = null
+    private var viewModel: HomeViewModel? = null
 
-
-
-public class HomeFragment extends BaseFragment {
-
-    private FragmentHomeBinding binding;
-    private HomeViewModel viewModel;
-
-    public HomeFragment() {
-        // Required empty public constructor
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = customizeDataBinding(inflater, container, R.layout.fragment_home)
+        return binding!!.root
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = customizeDataBinding(inflater, container, R.layout.fragment_home);
-        return binding.getRoot();
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        showToolbar();
-        showBottomNavigation();
-        hideBackButton();
-        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        showToolbar()
+        showBottomNavigation()
+        hideBackButton()
+        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
     }
 }

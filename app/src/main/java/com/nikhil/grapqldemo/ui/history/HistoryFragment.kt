@@ -1,39 +1,35 @@
-package com.nikhil.grapqldemo.ui.history;
+package com.nikhil.grapqldemo.ui.history
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import com.nikhil.grapqldemo.R
+import com.nikhil.grapqldemo.databinding.FragmentHistoryBinding
+import com.nikhil.grapqldemo.ui.base.BaseFragment
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProvider;
+class HistoryFragment : BaseFragment() {
 
-import com.nikhil.grapqldemo.R;
-import com.nikhil.grapqldemo.databinding.FragmentHistoryBinding;
-import com.nikhil.grapqldemo.ui.base.BaseFragment;
+    private lateinit var binding: FragmentHistoryBinding
+    private var viewModel: HistoryViewModel? = null
 
-
-public class HistoryFragment extends BaseFragment {
-
-    private FragmentHistoryBinding binding;
-    private HistoryViewModel viewModel;
-    public HistoryFragment() {
-        // Required empty public constructor
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = customizeDataBinding(
+            inflater,
+            container,
+            R.layout.fragment_history
+        )
+        return binding.root
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = customizeDataBinding(inflater, container, R.layout.fragment_history);
-        return binding.getRoot();
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        showToolbar();
-        showBottomNavigation();
-        hideBackButton();
-        viewModel = new ViewModelProvider(this).get(HistoryViewModel.class);
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        showToolbar()
+        showBottomNavigation()
+        hideBackButton()
+        viewModel = ViewModelProvider(this)[HistoryViewModel::class.java]
     }
 }

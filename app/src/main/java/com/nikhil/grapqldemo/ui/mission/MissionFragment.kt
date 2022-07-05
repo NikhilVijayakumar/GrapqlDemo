@@ -1,41 +1,31 @@
-package com.nikhil.grapqldemo.ui.mission;
+package com.nikhil.grapqldemo.ui.mission
 
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import com.nikhil.grapqldemo.R
+import com.nikhil.grapqldemo.databinding.FragmentMissionBinding
+import com.nikhil.grapqldemo.ui.base.BaseFragment
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProvider;
+class MissionFragment : BaseFragment() {
 
-import com.nikhil.grapqldemo.R;
-import com.nikhil.grapqldemo.databinding.FragmentMissionBinding;
-import com.nikhil.grapqldemo.ui.base.BaseFragment;
+    private var binding: FragmentMissionBinding? = null
+    private var viewModel: MissionViewModel? = null
 
-
-public class MissionFragment extends BaseFragment {
-
-    private FragmentMissionBinding binding;
-    private MissionViewModel viewModel;
-
-
-    public MissionFragment() {
-        // Required empty public constructor
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = customizeDataBinding(inflater, container, R.layout.fragment_mission)
+        return binding!!.root
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = customizeDataBinding(inflater, container, R.layout.fragment_mission);
-        return binding.getRoot();
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        showToolbar();
-        showBottomNavigation();
-        hideBackButton();
-        viewModel = new ViewModelProvider(this).get(MissionViewModel.class);
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        showToolbar()
+        showBottomNavigation()
+        hideBackButton()
+        viewModel = ViewModelProvider(this)[MissionViewModel::class.java]
     }
 }
